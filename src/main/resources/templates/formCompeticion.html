@@ -1,0 +1,113 @@
+
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Competicion</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #004D98, #212121); /* Fondo degradado azul y negro */
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-family: 'Impact', sans-serif;
+      color: #004D98; /* Azul para el título */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      color: #004D98;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .form-control:focus {
+      border-color: #004D98;
+      box-shadow: 0 0 5px rgba(0, 77, 152, 0.5);
+    }
+
+    .btn-primary {
+      background-color: #004D98; /* Azul para el botón principal */
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      background-color: #003B73; /* Azul más oscuro en hover */
+    }
+
+    .btn-secondary {
+      background-color: #212121; /* Botón "Volver" con fondo negro */
+      color: white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: #333333; /* Hover más oscuro */
+    }
+
+    .btn-block {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <h2 th:text="${competicion.id != null ? 'Editar Competicion' : 'Agregar Competicion'}"></h2>
+  <form th:action="@{/guardarCompeticion}" th:object="${competicion}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <div class="form-group">
+      <label for="nombre">Nombre</label>
+      <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre de la competicion" required>
+    </div>
+
+    <div class="form-group">
+      <label for="montoPremio">Monto Premio</label>
+      <input type="number" th:field="*{montoPremio}" class="form-control" placeholder="montoPremio" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaInicio">fecha de Inicio</label>
+      <input type="date" th:field="*{fechaInicio}" class="form-control" placeholder="fechaInicio" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fechaFin">fecha de Final</label>
+      <input type="date" th:field="*{fechaFin}" class="form-control" placeholder="fechaFin" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+  </form>
+  <a href="/verCompeticion" class="btn btn-secondary">Volver a la lista de Competiciones</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

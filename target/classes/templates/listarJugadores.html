@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadores del Club</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+      background: linear-gradient(to right, #004D98, #212121); /* Fondo degradado azul y negro */
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 3rem;
+      font-family: 'Impact', sans-serif;
+      color: #004D98; /* Azul para el título */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .table {
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .table th, .table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .table th {
+      background-color: #212121; /* Fondo negro para los encabezados */
+      color: #ffffff;
+      border-bottom: 2px solid #004D98; /* Borde azul en los encabezados */
+      font-weight: bold;
+    }
+
+    .table td {
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .btn {
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    .btn-primary, .btn-danger, .btn-success {
+      width: 120px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      background-color: #004D98; /* Azul para el botón principal */
+    }
+
+    .btn-primary:hover {
+      background-color: #003B73; /* Azul más oscuro en hover */
+    }
+
+    .btn-danger {
+      background-color: #FF5733; /* Rojo para el botón de eliminar */
+    }
+
+    .btn-danger:hover {
+      background-color: #e04e2d; /* Rojo más oscuro en hover */
+    }
+
+    .btn-success {
+      background-color: #004D98;
+    }
+
+    .btn-success:hover {
+      background-color:  #003B73;
+    }
+
+    .icon {
+      margin-right: 8px;
+    }
+
+    .action-btns {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .action-btns a {
+      margin: 5px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer p {
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .btn-block {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .btn-primary.btn-block {
+      background-color: #212121; /* Botón "Volver a Menú" con fondo negro */
+    }
+
+
+    .btn-primary.btn-block:hover {
+      background-color: #333333; /* Hover más oscuro */
+    }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Jugadores del Club <span th:text="${club.nombre}"></span></h1>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Numero</th>
+            <th>Posicion</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="jugador : ${jugadores}">
+            <td th:text="${jugador.id}"></td>
+            <td th:text="${jugador.nombre}"></td>
+            <td th:text="${jugador.apellido}"></td>
+            <td th:text="${jugador.numero}"></td>
+            <td th:text="${jugador.posicion}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <a th:href="@{/verClub}" class="btn btn-primary mt-3">Volver</a>
+</div>
+</body>
+</html>

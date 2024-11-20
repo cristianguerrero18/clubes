@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Club</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #004D98, #212121); /* Fondo degradado azul y negro */
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-family: 'Impact', sans-serif;
+      color: #004D98; /* Azul para el título */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      color: #004D98;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .form-control:focus {
+      border-color: #004D98;
+      box-shadow: 0 0 5px rgba(0, 77, 152, 0.5);
+    }
+
+    .btn-primary {
+      background-color: #004D98; /* Azul para el botón principal */
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      background-color: #003B73; /* Azul más oscuro en hover */
+    }
+
+    .btn-secondary {
+      background-color: #212121; /* Botón "Volver" con fondo negro */
+      color: white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: #333333; /* Hover más oscuro */
+    }
+
+    .btn-block {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-5">
+  <!-- Título del formulario (editar o crear) -->
+  <h2 th:text="${club.id != null ? 'Editar Club' : 'Agregar Club'}"></h2>
+
+  <!-- Formulario para crear o editar el club -->
+  <form th:action="@{/guardarClub}" th:object="${club}" method="post">
+    <!-- Campo para el ID (solo para edición) -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Campo para Nombre del Club -->
+    <div class="form-group">
+      <label for="nombre">Nombre del Club</label>
+      <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre del Club" required>
+    </div>
+
+    <!-- Selección de Entrenador -->
+    <div class="form-group">
+      <label for="entrenador">Entrenador</label>
+      <select th:field="*{entrenador}" class="form-control" required>
+        <option value="" disabled selected>Seleccione un Entrenador</option>
+        <option th:each="entrenador : ${listaEntrenadores}"
+                th:value="${entrenador.id}"
+                th:text="${entrenador.nombre + ' ' + entrenador.apellido}">
+        </option>
+      </select>
+    </div>
+
+    <!-- Selección de Asociación -->
+    <div class="form-group">
+      <label for="asociacion">Asociación</label>
+      <select th:field="*{asociacion}" class="form-control" required>
+        <option value="" disabled selected>Seleccione una Asociación</option>
+        <option th:each="asociacion : ${listaAsociacion}"
+                th:value="${asociacion.id}"
+                th:text="${asociacion.nombre}">
+        </option>
+      </select>
+    </div>
+
+    <!-- Selección de Competiciones -->
+    <div class="form-group">
+      <label for="competiciones">Competiciones</label>
+      <select multiple th:field="*{competiciones}" class="form-control">
+        <option value="" disabled>Seleccione Competencias</option>
+        <option th:each="competicion : ${listaCompeticiones}"
+                th:value="${competicion.id}"
+                th:text="${competicion.nombre}">
+        </option>
+      </select>
+    </div>
+
+    <!-- Botón de Enviar -->
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">
+        <span th:text="${club.id != null ? 'Actualizar Club' : 'Guardar Club'}"></span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Enlace para volver -->
+  <a href="/verClub" class="btn btn-secondary">Volver a la lista de Clubs</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

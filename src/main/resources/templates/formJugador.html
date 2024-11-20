@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Jugador</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #004D98, #212121); /* Fondo degradado azul y negro */
+      font-family: 'Arial', sans-serif;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5rem;
+      font-family: 'Impact', sans-serif;
+      color: #004D98; /* Azul para el título */
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .form-group label {
+      font-size: 1.1rem;
+      color: #004D98;
+    }
+
+    .form-control {
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .form-control:focus {
+      border-color: #004D98;
+      box-shadow: 0 0 5px rgba(0, 77, 152, 0.5);
+    }
+
+    .btn-primary {
+      background-color: #004D98; /* Azul para el botón principal */
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+
+    .btn-primary:hover {
+      background-color: #003B73; /* Azul más oscuro en hover */
+    }
+
+    .btn-secondary {
+      background-color: #212121; /* Botón "Volver" con fondo negro */
+      color: white;
+      border-radius: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+    }
+
+    .btn-secondary:hover {
+      background-color: #333333; /* Hover más oscuro */
+    }
+
+    .btn-block {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <!-- Título del formulario (editar o crear) -->
+  <h2 th:text="${jugador.id != null ? 'Editar Jugador' : 'Agregar Jugador'}"></h2>
+
+  <!-- Formulario para crear o editar el jugador -->
+  <form th:action="@{/guardarJugador}" th:object="${jugador}" method="post">
+    <!-- Campo para el ID (solo para edición) -->
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Campo para Nombre del Jugador -->
+    <div class="form-group">
+      <label for="nombre">Nombre del Jugador</label>
+      <input type="text" th:field="*{nombre}" class="form-control" placeholder="Nombre del Jugador" required>
+    </div>
+
+    <div class="form-group">
+      <label for="apellido">Apellido del Jugador</label>
+      <input type="text" th:field="*{apellido}" class="form-control" placeholder="Apellido del Jugador" required>
+    </div>
+
+    <div class="form-group">
+      <label for="numero">Número del Jugador</label>
+      <input type="number" th:field="*{numero}" class="form-control" placeholder="Número del Jugador" required>
+    </div>
+
+    <div class="form-group">
+      <label for="posicion">Posición del Jugador</label>
+      <input type="text" th:field="*{posicion}" class="form-control" placeholder="Posición del Jugador" required>
+    </div>
+
+    <div class="form-group">
+      <label for="club">Club</label>
+      <select th:field="*{club}" class="form-control">
+        <option value="" disabled>Seleccione un Club</option>
+        <option th:each="club : ${listaClubes}"
+                th:value="${club.id}"
+                th:text="${club.nombre}">
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">
+        <span th:text="${jugador.id != null ? 'Actualizar Jugador' : 'Guardar Jugador'}"></span>
+      </button>
+    </div>
+  </form>
+
+  <!-- Enlace para volver -->
+  <a href="/verJugador" class="btn btn-secondary">Volver a la lista de Jugadores</a>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

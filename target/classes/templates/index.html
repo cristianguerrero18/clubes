@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundial Cristian Guerrero</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <style>
+    body {
+    background: linear-gradient(to right, #004D98, #212121);
+   background-size: cover;
+   color: white;
+   font-family: Arial, sans-serif;
+   height: 100vh;
+ }
+
+
+     .container {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100%;
+     }
+
+     .card-deck {
+       display: flex;
+       justify-content: space-around;
+       flex-wrap: wrap;
+       width: 100%;
+       max-width: 1200px;
+     }
+
+     .card {
+       background-color: rgba(0, 0, 0, 0.7); /* Fondo oscuro para las tarjetas */
+       border: none;
+       border-radius: 10px;
+       transition: transform 0.3s ease-in-out;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+       margin: 20px;
+       width: 18rem; /* Tamaño uniforme para todas las tarjetas */
+     }
+
+     .card:hover {
+       transform: scale(1.05);
+       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+     }
+
+     .card-body {
+       text-align: center;
+     }
+
+     .card-title {
+       font-size: 1.5rem;
+       margin-bottom: 20px;
+     }
+
+     .card-text {
+       font-size: 1.1rem;
+     }
+
+     .btn {
+       background-color: #0072ff;
+       border: none;
+       padding: 12px 25px;
+       font-size: 1.1rem;
+       border-radius: 5px;
+       transition: background-color 0.3s;
+       width: 100%; /* Hacer los botones del mismo tamaño */
+       margin-top: 15px;
+     }
+
+     .btn:hover {
+       background-color: #005bb5;
+     }
+
+     .icon {
+       font-size: 2.5rem;
+       color: #0072ff;
+       margin-bottom: 15px;
+       transition: color 0.3s;
+     }
+
+     .icon:hover {
+       color: #00c6ff;
+     }
+
+     h1 {
+       text-align: center;
+       margin-top: 50px;
+       font-size: 3rem;
+       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+     }
+
+     footer {
+       text-align: center;
+       margin-top: 30px;
+       font-size: 1.2rem;
+     }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div>
+    <h1>Bienvenido a Mundial Cristian Guerrero</h1>
+    <div class="card-deck">
+      <!-- Clubes -->
+      <div class="card">
+        <div class="card-body">
+          <i class="fas fa-building icon"></i> <!-- Icono de Clubes -->
+          <h5 class="card-title">Clubes</h5>
+          <p class="card-text">Descubre los mejores clubes deportivos cerca de ti.</p>
+          <a href="/verClub" class="btn">Ver</a>
+        </div>
+      </div>
+
+      <!-- Entrenadores -->
+      <div class="card">
+        <div class="card-body">
+          <i class="fas fa-chalkboard-teacher icon"></i> <!-- Icono de Entrenadores -->
+          <h5 class="card-title">Entrenadores</h5>
+          <p class="card-text">Conoce a los entrenadores que te guiarán en tu camino.</p>
+          <a href="/verEntrenador" class="btn">Ver</a>
+        </div>
+      </div>
+
+      <!-- Jugadores -->
+      <div class="card">
+        <div class="card-body">
+          <i class="fas fa-users icon"></i> <!-- Icono de Jugadores -->
+          <h5 class="card-title">Jugadores</h5>
+          <p class="card-text">Únete a la comunidad de jugadores y compite.</p>
+          <a href="/verJugador" class="btn">Ver</a>
+        </div>
+      </div>
+
+      <!-- Asociaciones -->
+      <div class="card">
+        <div class="card-body">
+          <i class="fas fa-handshake icon"></i> <!-- Icono de Asociaciones -->
+          <h5 class="card-title">Asociaciones</h5>
+          <p class="card-text">Conoce las asociaciones que unen a la comunidad deportiva.</p>
+          <a href="/verAsociacion" class="btn">Ver</a>
+        </div>
+      </div>
+
+      <!-- Competencias -->
+      <div class="card">
+        <div class="card-body">
+          <i class="fas fa-trophy icon"></i> <!-- Icono de Competencias -->
+          <h5 class="card-title">Competencias</h5>
+          <p class="card-text">Participa en las competencias más emocionantes del deporte.</p>
+          <a href="/verCompeticion" class="btn">Ver</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
